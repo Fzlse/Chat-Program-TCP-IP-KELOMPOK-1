@@ -1,0 +1,44 @@
+﻿<!-- ChatClient/MainWindow.xaml -->
+<Window x:Class="ChatClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ChatClient" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top: connection controls -->
+        <StackPanel Orientation="Horizontal" Margin="8">
+            <TextBox x:Name="IpTextBox" Width="140" Text="127.0.0.1"/>
+            <TextBox x:Name="PortTextBox" Width="70" Margin="6,0,0,0" Text="5000"/>
+            <TextBox x:Name="UserTextBox" Width="140" Margin="6,0,0,0" Text="alice"/>
+            <Button x:Name="ConnectButton" Content="Connect" Margin="6,0,0,0" Click="ConnectButton_Click"/>
+            <Button x:Name="DisconnectButton" Content="Disconnect" Margin="6,0,0,0" Click="DisconnectButton_Click" IsEnabled="False"/>
+        </StackPanel>
+
+        <!-- Middle: users and messages -->
+        <Grid Grid.Row="1" Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Header="Users" Grid.Column="0" Margin="0,0,6,0">
+                <ListBox x:Name="UsersListBox"/>
+            </GroupBox>
+
+            <GroupBox Header="Chat" Grid.Column="1">
+                <ListBox x:Name="MessagesListBox"/>
+            </GroupBox>
+        </Grid>
+
+        <!-- Bottom: input -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="8">
+            <TextBox x:Name="InputTextBox" VerticalAlignment="Center" HorizontalAlignment="Stretch" MinWidth="300" Width="Auto" />
+            <Button x:Name="SendButton" Content="Send" Width="80" Margin="6,0,0,0" Click="SendButton_Click" IsEnabled="False"/>
+        </StackPanel>
+    </Grid>
+</Window>
