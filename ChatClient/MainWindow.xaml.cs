@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace ChatClient {
     public partial class MainWindow : Window {
@@ -19,12 +20,50 @@ namespace ChatClient {
         StreamWriter _writer;
         CancellationTokenSource _cts;
         string _username;
+        private bool _isDarkTheme = false;
 
         public MainWindow() {
             InitializeComponent();
             MessagesListBox.ItemsSource = Messages;
             UsersListBox.ItemsSource = Users;
         }
+
+        private void ThemeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_isDarkTheme)
+            {
+                // Light Theme
+                Resources["BgColor"] = new SolidColorBrush(Color.FromRgb(245, 240, 255));
+                Resources["FgColor"] = new SolidColorBrush(Color.FromRgb(40, 20, 70));
+                Resources["ButtonBg"] = new SolidColorBrush(Color.FromRgb(200, 170, 255)); // ungu muda
+                Resources["ButtonFg"] = new SolidColorBrush(Colors.Black); // font hitam
+                Resources["TextBoxBg"] = new SolidColorBrush(Color.FromRgb(255, 250, 255));
+                Resources["TextBoxFg"] = new SolidColorBrush(Color.FromRgb(40, 20, 70));
+                Resources["ChatBg"] = new SolidColorBrush(Colors.White);
+                Resources["UsersBg"] = new SolidColorBrush(Colors.White);
+
+                ThemeButton.Content = "🌙";
+                _isDarkTheme = false;
+            }
+            else
+            {
+                // Dark Theme
+                Resources["BgColor"] = new SolidColorBrush(Color.FromRgb(26, 20, 37));
+                Resources["FgColor"] = new SolidColorBrush(Colors.White);
+                Resources["ButtonBg"] = new SolidColorBrush(Color.FromRgb(106, 13, 173)); // ungu modern
+                Resources["ButtonFg"] = new SolidColorBrush(Colors.White); // font putih
+                Resources["TextBoxBg"] = new SolidColorBrush(Color.FromRgb(46, 26, 71));
+                Resources["TextBoxFg"] = new SolidColorBrush(Colors.White);
+                Resources["ChatBg"] = new SolidColorBrush(Color.FromRgb(46, 26, 71));
+                Resources["UsersBg"] = new SolidColorBrush(Color.FromRgb(46, 26, 71));
+
+                ThemeButton.Content = "☀️";
+                _isDarkTheme = true;
+            }
+        }
+
+
+
 
         private async void ConnectButton_Click(object sender, RoutedEventArgs e) {
             var ip = IpTextBox.Text.Trim();

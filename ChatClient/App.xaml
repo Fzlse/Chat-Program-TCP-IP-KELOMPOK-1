@@ -1,9 +1,41 @@
 ﻿<Application x:Class="ChatClient.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:ChatClient"
              StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
-    </Application.Resources>
+	<Application.Resources>
+		<!-- Default Light Theme -->
+		<SolidColorBrush x:Key="BgColor" Color="#F5F0FF"/>
+		<SolidColorBrush x:Key="FgColor" Color="#281446"/>
+		<SolidColorBrush x:Key="ButtonBg" Color="#C8AAFF"/>
+		<!-- Ungu muda -->
+		<SolidColorBrush x:Key="ButtonFg" Color="Black"/>
+		<!-- Font hitam -->
+		<SolidColorBrush x:Key="TextBoxBg" Color="#FFFAFF"/>
+		<SolidColorBrush x:Key="TextBoxFg" Color="#281446"/>
+		<SolidColorBrush x:Key="ChatBg" Color="White"/>
+		<SolidColorBrush x:Key="UsersBg" Color="White"/>
+
+		<!-- Style umum Button -->
+		<Style TargetType="Button">
+			<Setter Property="Background" Value="{DynamicResource ButtonBg}"/>
+			<Setter Property="Foreground" Value="{DynamicResource ButtonFg}"/>
+			<Setter Property="BorderBrush" Value="{DynamicResource ButtonBg}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+		</Style>
+
+		<!-- Style khusus untuk SendButton -->
+		<Style TargetType="Button" x:Key="SendButtonStyle" BasedOn="{StaticResource {x:Type Button}}">
+			<Style.Triggers>
+				<!-- Saat disable -->
+				<Trigger Property="IsEnabled" Value="False">
+					<Setter Property="Background" Value="{DynamicResource ButtonBg}"/>
+					<Setter Property="Foreground" Value="{DynamicResource ButtonFg}"/>
+					<Setter Property="Opacity" Value="0.5"/>
+					<!-- bedain biar keliatan inactive -->
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+	</Application.Resources>
 </Application>

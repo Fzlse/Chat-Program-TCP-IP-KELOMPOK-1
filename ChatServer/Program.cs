@@ -142,7 +142,7 @@ class Program {
         }
         try { tcp.Close(); } catch { }
     }
-
+      
     static async Task BroadcastAsync(ChatMessage msg) {
         var json = JsonSerializer.Serialize(msg);
         List<ClientInfo> snapshot;

@@ -1,45 +1,78 @@
-﻿<!-- ChatClient/MainWindow.xaml -->
-<Window
+﻿<Window x:Class="ChatClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="ChatClient.MainWindow"
-        Title="ChatClient" Height="454" Width="595">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        Title="ChatClient" Height="454" Width="595"
+        Background="{DynamicResource BgColor}"
+        Foreground="{DynamicResource FgColor}">
 
-        <!-- Top: connection controls -->
-        <StackPanel Orientation="Horizontal" Margin="8">
-            <TextBox x:Name="IpTextBox" Width="140" Text="127.0.0.1"/>
-            <TextBox x:Name="PortTextBox" Width="70" Margin="6,0,0,0" Text="5000"/>
-            <TextBox x:Name="UserTextBox" Width="140" Margin="6,0,0,0" Text="ASYROF"/>
-            <Button x:Name="ConnectButton" Content="Connect" Margin="6,0,0,0" Click="ConnectButton_Click"/>
-            <Button x:Name="DisconnectButton" Content="Disconnect" Margin="6,0,0,0" Click="DisconnectButton_Click" IsEnabled="False"/>
-        </StackPanel>
+	<Grid Background="{DynamicResource BgColor}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
 
-        <!-- Middle: users and messages -->
-        <Grid Grid.Row="1" Margin="8">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="180"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+		<!-- Top: connection controls + theme button -->
+		<StackPanel Orientation="Horizontal" Margin="8">
+			<TextBox x:Name="IpTextBox" Width="140" Text="127.0.0.1"
+                     Background="{DynamicResource TextBoxBg}"
+                     Foreground="{DynamicResource TextBoxFg}"/>
+			<TextBox x:Name="PortTextBox" Width="70" Margin="6,0,0,0" Text="5000"
+                     Background="{DynamicResource TextBoxBg}"
+                     Foreground="{DynamicResource TextBoxFg}"/>
+			<TextBox x:Name="UserTextBox" Width="140" Margin="6,0,0,0" Text="ASYROF"
+                     Background="{DynamicResource TextBoxBg}"
+                     Foreground="{DynamicResource TextBoxFg}"/>
 
-            <GroupBox Header="Users" Grid.Column="0" Margin="0,0,6,0">
-                <ListBox x:Name="UsersListBox" FontSize="20"/>
-            </GroupBox>
+			<Button x:Name="ConnectButton" Content="Connect" Margin="6,0,0,0"
+                    Background="{DynamicResource ButtonBg}"
+                    Foreground="{DynamicResource ButtonFg}"
+                    Click="ConnectButton_Click"/>
+			<Button x:Name="DisconnectButton" Content="Disconnect" Margin="6,0,0,0"
+                    Background="{DynamicResource ButtonBg}"
+                    Foreground="{DynamicResource ButtonFg}"
+                    Click="DisconnectButton_Click" IsEnabled="False"/>
+			<!-- Button untuk toggle tema -->
+			<Button x:Name="ThemeButton" Content="🌙" Margin="6,0,0,0"
+                    Background="{DynamicResource ButtonBg}"
+                    Foreground="{DynamicResource ButtonFg}"
+                    Click="ThemeButton_Click"/>
+		</StackPanel>
 
-            <GroupBox Header="Chat" Grid.Column="1">
-                <ListBox x:Name="MessagesListBox" Margin="0,0,-2,0" Height="319" FontSize="20"/>
-            </GroupBox>
-        </Grid>
+		<!-- Middle: users and messages -->
+		<Grid Grid.Row="1" Margin="8">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="180"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
 
-        <!-- Bottom: input -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="8">
-            <TextBox x:Name="InputTextBox" VerticalAlignment="Center" HorizontalAlignment="Stretch" MinWidth="300" Width="Auto" />
-            <Button x:Name="SendButton" Content="Send" Width="80" Margin="6,0,0,0" Click="SendButton_Click" IsEnabled="False"/>
-        </StackPanel>
-    </Grid>
+			<GroupBox Header="Users" Grid.Column="0" Margin="0,0,6,0"
+                      Foreground="{DynamicResource FgColor}"
+                      Background="{DynamicResource BgColor}">
+				<ListBox x:Name="UsersListBox" FontSize="20"
+						 Background="{DynamicResource UsersBg}"
+						 Foreground="{DynamicResource TextBoxFg}"/>
+			</GroupBox>
+
+			<GroupBox Header="Chat" Grid.Column="1"
+                      Foreground="{DynamicResource FgColor}"
+                      Background="{DynamicResource BgColor}">
+				<ListBox x:Name="MessagesListBox" FontSize="20"
+						 Background="{DynamicResource ChatBg}"
+						 Foreground="{DynamicResource TextBoxFg}"/>
+			</GroupBox>
+		</Grid>
+
+		<!-- Bottom: input -->
+		<StackPanel Grid.Row="2" Orientation="Horizontal" Margin="8">
+			<TextBox x:Name="InputTextBox" VerticalAlignment="Center"
+                     HorizontalAlignment="Stretch" MinWidth="300"
+                     Background="{DynamicResource TextBoxBg}"
+                     Foreground="{DynamicResource TextBoxFg}"/>
+			<Button x:Name="SendButton" Content="Send" Width="80" Margin="6,0,0,0"
+                    Background="{DynamicResource ButtonBg}"
+                    Foreground="{DynamicResource ButtonFg}"
+                    Click="SendButton_Click" IsEnabled="False"/>
+		</StackPanel>
+	</Grid>
 </Window>
