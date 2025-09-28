@@ -48,7 +48,7 @@
             <GroupBox Header="Users" Grid.Column="0" Margin="0,0,6,0"
                       Foreground="{DynamicResource FgColor}"
                       Background="{DynamicResource BgColor}">
-                <ListBox x:Name="UsersListBox" FontSize="20"
+                <ListBox x:Name="UsersListBox" FontSize="11"
                          Background="{DynamicResource UsersBg}"
                          Foreground="{DynamicResource TextBoxFg}"/>
             </GroupBox>
@@ -56,7 +56,7 @@
             <GroupBox Header="Chat" Grid.Column="1"
                       Foreground="{DynamicResource FgColor}"
                       Background="{DynamicResource BgColor}">
-                <ListBox x:Name="MessagesListBox" FontSize="20"
+                <ListBox x:Name="MessagesListBox" FontSize="11"
                          Background="{DynamicResource ChatBg}"
                          Foreground="{DynamicResource TextBoxFg}"/>
             </GroupBox>
